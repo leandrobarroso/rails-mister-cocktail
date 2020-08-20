@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
 # Ingredient.create(name: "lemon")
 # Ingredient.create(name: "ice")
 # Ingredient.create(name: "mint leaves")
-puts "Cleaning database..."
-Ingredient.destroy_all
+
+# puts 'Cleaning Ingredients table...'
+# Ingredient.destroy_all
 
 puts 'Creating ingtredients from API...'
 
@@ -21,4 +21,19 @@ ingredient_list = JSON.parse(serialized_file)
 ingredient_list['drinks'].each do |ingredient|
   Ingredient.create(name: ingredient['strIngredient1'])
 end
+
+# puts 'Cleaning Cocktails table...'
+# Cocktail.destroy_all
+
+10.times do
+  Cocktail.create(name: Faker::Coffee.blend_name)
+end
+
+# puts 'Cleaning Doses table...'
+# Dose.destroy_all
+
+50.times do
+  Dose.create(description: Faker::Food.measurement, cocktail: Cocktail.find(rand(1..10)), ingredient: Ingredient.find(rand(1..ingredient_list['drinks'].length)))
+end
+
 puts 'Finished!'

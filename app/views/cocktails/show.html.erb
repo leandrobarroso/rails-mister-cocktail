@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6 m-1 p-1 border rounded shadow bg-white d-flex flex-column">
+      <img src=<%= "http://loremflickr.com/400/400/#{@cocktail.name}" %> alt="" width="400" height="400">
+      <div class="flex-grow-1 m-1">
+        <h1><%= @cocktail.name %></h1>
+        <div class="p-3 border rounded bg-light">
+          <h3>DOSES</h3>
+          <ul>
+            <% @doses.each do |dose| %>
+              <li>
+                <%= dose.description %>
+                <%= dose.ingredient.name %>
+                <%= link_to 'Remove', dose_path(dose), method: :delete, data: { confirm: 'Are you sure?'} %>
+              </li>
+            <% end %>
+          </ul>
+          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-3 btn btn-warning btn-lg' do %>
+            <span><i class="fas fa-star-half-alt"></i>Add Dose</span>
+          <% end %>
+        </div>
+      </div>
+      <div class="m-1 d-flex align-items-end justify-content-between">
+          <%= link_to cocktails_path, class: 'btn btn-success btn-lg' do %>
+            <i class="fas fa-home"></i>
+          <% end %>
+          <div>
+          <%= link_to edit_cocktail_path(@cocktail), class: 'ml-3 btn btn-primary btn-lg' do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+          <%= link_to cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-3 btn btn-danger btn-lg' do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

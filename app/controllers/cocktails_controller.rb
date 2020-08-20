@@ -5,7 +5,9 @@ class CocktailsController < ApplicationController
     @cocktails = Cocktail.all
   end
 
-  def show; end
+  def show
+    @doses = @cocktail.doses
+  end
 
   def new
     @cocktail = Cocktail.new
@@ -20,8 +22,6 @@ class CocktailsController < ApplicationController
       render :new
     end
   end
-
-  def edit; end
 
   def update
     if @cocktail.update(cocktail_params)

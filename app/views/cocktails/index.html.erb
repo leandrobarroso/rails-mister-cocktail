@@ -1,0 +1,13 @@
+<div class="container">
+  <h1>Cocktails</h1>
+  <ul class="list-group">
+    <% @cocktails.each do |cocktail| %>
+      <%= link_to cocktail_path(cocktail) do %>
+          <li class="list-group-item"><%= cocktail.name %></li>
+      <% end %>
+    <% end %>
+  </ul>
+  <%= link_to new_cocktail_path, class: 'ml-3 btn btn-success btn-sm' do %>
+      <i class="fas fa-plus-circle"></i>
+    <% end %>
+</div>
