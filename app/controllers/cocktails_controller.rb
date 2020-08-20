@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: %i[show edit update destroy]
+  before_action :set_cocktail, only: %i[show destroy]
 
   def index
     @cocktails = Cocktail.all
@@ -20,14 +20,6 @@ class CocktailsController < ApplicationController
       redirect_to @cocktail, notice: 'Cocktail was successfully created.'
     else
       render :new
-    end
-  end
-
-  def update
-    if @cocktail.update(cocktail_params)
-      redirect_to @cocktail, notice: 'Cocktail was successfully updated.'
-    else
-      render :edit
     end
   end
 
