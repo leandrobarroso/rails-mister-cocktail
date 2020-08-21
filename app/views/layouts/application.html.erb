@@ -3,7 +3,7 @@
   <head>
     <title>RailsMisterCocktail</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,13 +13,17 @@
 
   <body>
     <nav class="navbar navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">
+      <%= link_to root_path, class: 'navbar-brand' do %>
         <i class="fas fa-cocktail"></i>
-        Cocktails
-      </a>
+        Mr Cocktails
+      <% end %>
     </nav>
     <div class="container">
       <%= yield %>
     </div>
+    <footer id="footer" class="p-5 bg-dark">
+    <div></div>
+    <p>Desenvolvido com por <%= link_to "Leandro Barroso", "https://leandrobarroso.github.io/profile/", :target => "_blank" %></p>
+    </footer>
   </body>
 </html>

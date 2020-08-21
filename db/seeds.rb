@@ -12,6 +12,8 @@
 
 # puts 'Cleaning Ingredients table...'
 # Ingredient.destroy_all
+require 'json'
+require 'open-uri'
 
 puts 'Creating ingtredients from API...'
 
