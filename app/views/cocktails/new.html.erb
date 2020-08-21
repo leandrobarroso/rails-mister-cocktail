@@ -1,11 +1,6 @@
 <div class="container">
-  <div class="col-6 m-3 border rounded shadow">
+  <div class="col-6 m-3 border rounded shadow p-3">
     <h1>Add New Cocktail</h1>
     <%= render 'shared/form', cocktail: @cocktail %>
-    <div class="my-5 p-1 bg-white d-flex justify-content-center">
-    <%= link_to cocktails_path, class: 'btn btn-success btn-lg' do %>
-      <i class="fas fa-home"></i>
-    <% end %>
-    </div>
   </div>
 </div>
