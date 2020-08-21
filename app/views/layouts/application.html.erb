@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsMisterCocktail</title>
+    <title>Miss Cocktails</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <%= csrf_meta_tags %>
@@ -21,9 +21,27 @@
     <div class="container">
       <%= yield %>
     </div>
-    <footer id="footer" class="p-5 bg-dark">
-    <div></div>
-    <p>Developed with ❤️ and ☕ by <%= link_to "Leandro Barroso", "https://leandrobarroso.github.io/profile/", :target => "_blank" %></p>
+    <footer class="mt-5 p-2 bg-dark">
+      <div class="mw-100 row d-flex flex-column justify-content-center">
+        <div class="w-100 m-2 p-3 col-12 d-flex justify-content-center">
+          <span class="m-3 p-2 display-4">
+            <a href="https://github.com/leandrobarroso" target="_blank">
+              <i class="fab fa-github text-light"></i>
+            </a>
+          </span>
+          <span class="m-3 p-2 display-4">
+            <a href="https://linkedin.com/in/leandrorbarroso" target="_blank">
+              <i class="fab fa-linkedin-in text-light"></i>
+            </a>
+          </span>
+          <span class="m-3 p-2 display-4">
+            <a href="https://twitter.com/LRBarroso" target="_blank">
+              <i class="fab fa-twitter text-light"></i>
+            </a>
+          </span>
+        </div>
+        <p class="text-center text-light">Developed with ☕ and &#10084; by <%= link_to "Leandro Barroso", "https://leandrobarroso.github.io/profile/", :target => "_blank", class: "text-info" %></p>
+      </div>
     </footer>
   </body>
 </html>
