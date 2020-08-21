@@ -3,7 +3,7 @@
     <div class="col-6 m-1 p-1 border rounded shadow bg-white d-flex flex-column">
       <img src=<%= "http://loremflickr.com/400/400/#{@cocktail.name}" %> alt="" width="400" height="400">
       <div class="flex-grow-1 m-1">
-        <h1><%= @cocktail.name %></h1>
+        <h1 class="text-center"><%= @cocktail.name %></h1>
         <div class="p-3 border rounded bg-light">
           <h3>DOSES</h3>
           <ul>
@@ -15,14 +15,14 @@
               </li>
             <% end %>
           </ul>
-          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-3 btn btn-warning btn-lg' do %>
-            <span><i class="fas fa-star-half-alt"></i>Add Dose</span>
+          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-3 btn btn-secondary btn-lg' do %>
+            <span><i class="fas fa-blender"></i></i>Add Dose</span>
           <% end %>
         </div>
       </div>
       <div class="m-1 d-flex align-items-end justify-content-between">
-          <%= link_to cocktails_path, class: 'btn btn-success btn-lg' do %>
-            <i class="fas fa-home"></i>
+          <%= link_to cocktails_path, class: 'btn btn-primary btn-lg' do %>
+            <i class="fas fa-list-ul"></i>
           <% end %>
           <div>
           <%= link_to cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-3 btn btn-danger btn-lg' do %>
