@@ -5,18 +5,20 @@
       <div class="flex-grow-1 m-1">
         <h1 class="text-center"><%= @cocktail.name %></h1>
         <div class="p-3 border rounded bg-light">
-          <h3>DOSES</h3>
-          <ul>
+          <h3 class="ml-2">DOSES</h3>
+          <ul class="m-2 list-group">
             <% @doses.each do |dose| %>
-              <li>
+              <li class="list-group-item d-flex justify-content-between">
                 <%= dose.description %>
                 <%= dose.ingredient.name %>
-                <%= link_to 'Remove', dose_path(dose), method: :delete, data: { confirm: 'Are you sure?'} %>
+                <%= link_to dose_path(dose), method: :delete, data: { confirm: 'Are you sure?'} do%>
+                  <i class="fas fa-times"></i>
+                <% end %>
               </li>
             <% end %>
           </ul>
-          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-3 btn btn-secondary btn-lg' do %>
-            <span><i class="fas fa-blender"></i></i>Add Dose</span>
+          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-2 btn btn-secondary btn-lg' do %>
+            <span><i class="fas fa-blender"></i></i> Add Dose</span>
           <% end %>
         </div>
       </div>
