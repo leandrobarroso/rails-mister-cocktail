@@ -7,7 +7,7 @@
 <div class="m-2 border rounded p-2 row justify-content-center">
   <% @cocktails.each do |cocktail| %>
     <%= link_to cocktail_path(cocktail) do %>
-        <div class="col-3 m-3">
+        <div class="col-3 m-3" data-aos="fade-up" data-aos-duration="750">
         <div class="card" style="width: 18rem;">
 
           <% if cocktail.photo.attached? %>
