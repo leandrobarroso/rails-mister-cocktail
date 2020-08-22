@@ -3,16 +3,20 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+//= require select2
+//= require select2_locale_pt-BR
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
 import 'bootstrap';
+import 'select2';
 
 import { loadDynamicSearchText } from '../components/search';
 import { loadIndexCardAnimation } from '../components/index_card';
-import { loadAddIngredientButton } from '../components/add_ingredient_btn';
+import { loadIngridientsSelect } from '../components/ingredients_select';
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -24,5 +28,5 @@ import { loadAddIngredientButton } from '../components/add_ingredient_btn';
 document.addEventListener('turbolinks:load', () => {
   loadDynamicSearchText();
   loadIndexCardAnimation();
-  loadAddIngredientButton();
+  loadIngridientsSelect();
 });

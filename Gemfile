@@ -32,6 +32,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'faker'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'simple_form'
+gem "select2-rails"
 gem 'turbolinks_render'
 
 group :development, :test do
