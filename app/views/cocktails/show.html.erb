@@ -1,17 +1,20 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-6 m-1 p-1 border rounded shadow bg-white d-flex flex-column">
-
+<div class="container rounded shadow p-2 bg-light">
+  <div class="row">
+    <div class="col-6">
       <% if @cocktail.photo.attached? %>
         <%= cl_image_tag @cocktail.photo.key, height: 400, width: 400, crop: :fill %>
       <% else %>
-        <%= image_tag "http://loremflickr.com/400/400/#{@cocktail.name}", alt: "#{@cocktail.name} pic", width: 400, height: 400 %>
+        <%= image_tag "http://loremflickr.com/800/800/#{@cocktail.name}", alt: "#{@cocktail.name} pic", class: "mw-100 mh-100" %>
       <% end %>
-
-      <div class="flex-grow-1 m-1">
+    </div>
+    <div class="col-6">
         <h1 class="text-center"><%= @cocktail.name %></h1>
-        <div class="p-3 border rounded bg-light">
-          <h3 class="ml-2">DOSES</h3>
+        <p>Mix this classic cocktail for a party using fresh mint, white rum, sugar, zesty lime and cooling soda water. Play with the quantities to suit your taste.</p>
+    </div>
+    <div class="col-12 row">
+      <div class="col-6">
+        <div class="my-3 border rounded p-3 bg-light">
+          <h3 class="ml-2">Ingredients</h3>
           <ul class="m-2 list-group">
             <% @doses.each do |dose| %>
               <li class="list-group-item d-flex justify-content-between">
@@ -24,20 +27,38 @@
             <% end %>
           </ul>
           <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-2 btn btn-secondary btn-lg' do %>
-            <span><i class="fas fa-blender"></i></i> Add Dose</span>
+            <span><i class="fas fa-blender"></i></i> Add Ingredient</span>
+          <% end %>
+        </div>
+      </div><div class="col-6">
+        <div class="my-3 border rounded p-3 bg-light">
+          <h3 class="ml-2">Method</h3>
+          <ul class="m-2 list-group">
+            <% @doses.each do |dose| %>
+              <li class="list-group-item d-flex justify-content-between">
+                <%= dose.description %>
+                <%= dose.ingredient.name %>
+                <%= link_to dose_path(dose), method: :delete, data: { confirm: 'Are you sure?'} do%>
+                  <i class="fas fa-times"></i>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-2 btn btn-secondary btn-lg' do %>
+            <span><i class="fas fa-pen"></i> Edit Method</span>
           <% end %>
         </div>
       </div>
-      <div class="m-1 d-flex align-items-end justify-content-between">
-          <%= link_to cocktails_path, class: 'btn btn-primary btn-lg' do %>
-            <i class="fas fa-list-ul"></i>
-          <% end %>
-          <div>
-          <%= link_to cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-3 btn btn-danger btn-lg' do %>
-            <i class="fas fa-trash"></i>
-          <% end %>
-          </div>
-        </div>
+    </div>
+  </div>
+  <div class="m-1 d-flex align-items-end justify-content-between">
+    <%= link_to cocktails_path, class: 'btn btn-primary btn-lg' do %>
+      <i class="fas fa-list-ul"></i>
+    <% end %>
+    <div>
+    <%= link_to cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-3 btn btn-danger btn-lg' do %>
+      <i class="fas fa-trash"></i>
+    <% end %>
     </div>
   </div>
 </div>
