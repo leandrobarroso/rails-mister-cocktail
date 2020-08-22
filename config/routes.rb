@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: 'cocktails#index'
   resources :cocktails, except: %i[edit update] do
     get 'search', on: :collection
-    resources :doses, only: %i[new create]
+    resources :doses, only: %i[create]
   end
 
   resources :doses, only: [:destroy]

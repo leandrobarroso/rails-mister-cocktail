@@ -28,7 +28,7 @@ end
 # Cocktail.destroy_all
 
 10.times do
-  Cocktail.create(name: Faker::Coffee.blend_name)
+  Cocktail.create(name: Faker::Coffee.blend_name, description: Faker::Food.description)
 end
 
 # puts 'Cleaning Doses table...'

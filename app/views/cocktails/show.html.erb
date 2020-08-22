@@ -9,26 +9,45 @@
     </div>
     <div class="col-6">
         <h1 class="text-center"><%= @cocktail.name %></h1>
-        <p>Mix this classic cocktail for a party using fresh mint, white rum, sugar, zesty lime and cooling soda water. Play with the quantities to suit your taste.</p>
+        <p><%= @cocktail.description %></p>
     </div>
     <div class="col-12 row">
       <div class="col-6">
         <div class="my-3 border rounded p-3 bg-light">
-          <h3 class="ml-2">Ingredients</h3>
-          <ul class="m-2 list-group">
+          <h3 id="ingrdients-header" class="ml-2">Ingredients</h3>
+          <ul class="mx-2 list-group">
             <% @doses.each do |dose| %>
-              <li class="list-group-item d-flex justify-content-between">
+              <li id="<%= "dose-#{dose.id}" %>" class="list-group-item d-flex justify-content-between">
+                <%= dose.ingredient.name %> -
                 <%= dose.description %>
-                <%= dose.ingredient.name %>
-                <%= link_to dose_path(dose), method: :delete, data: { confirm: 'Are you sure?'} do%>
+                <%= link_to dose_path(dose), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do%>
                   <i class="fas fa-times"></i>
                 <% end %>
               </li>
             <% end %>
           </ul>
-          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-2 btn btn-secondary btn-lg' do %>
+
+          <div id="add-dose" class="list-group-item m-1 p-1 d-none">
+            <%= simple_form_for([@cocktail, @dose], remote: true) do |f| %>
+              <div class="mw-100 row justify-content-center no-gutters">
+
+                <%= f.association :ingredient, class: 'col-4' %>
+
+                <%= f.input :description, class: 'col-4' %>
+
+                <%= f.button :submit, class: 'btn btn-primary btn-lg' do %>
+                  <i class="fas fa-plus"></i>
+                <% end %>
+
+              </div>
+            <% end %>
+          </div>
+
+
+          <%= button_tag id: 'add-ingredient', class: 'm-2 btn btn-secondary btn-lg' do %>
             <span><i class="fas fa-blender"></i></i> Add Ingredient</span>
           <% end %>
+
         </div>
       </div><div class="col-6">
         <div class="my-3 border rounded p-3 bg-light">
@@ -44,7 +63,7 @@
               </li>
             <% end %>
           </ul>
-          <%= link_to new_cocktail_dose_path(@cocktail), class: 'ml-2 btn btn-secondary btn-lg' do %>
+          <%= link_to cocktail_doses_path(@cocktail), class: 'ml-2 btn btn-secondary btn-lg' do %>
             <span><i class="fas fa-pen"></i> Edit Method</span>
           <% end %>
         </div>

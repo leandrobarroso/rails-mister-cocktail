@@ -32,6 +32,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'faker'
 gem 'font-awesome-sass', '~> 5.12.0'
 gem 'simple_form'
+gem 'turbolinks_render'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
