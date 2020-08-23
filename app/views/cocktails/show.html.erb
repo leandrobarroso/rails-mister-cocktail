@@ -26,20 +26,13 @@
               </li>
             <% end %>
           </ul>
-
           <div id="add-dose" class="list-group-item mx-2 my-5 p-2">
             <%= simple_form_for([@cocktail, @dose], remote: true) do |f| %>
-
-
                 <%= f.association :ingredient, input_html: { id: 'ingredients' } %>
-
                 <%= f.input :description, label: 'Amount' %>
-
                 <%= f.button :submit, 'Add Ingredient'.html_safe, class: 'm-2 btn btn-secondary btn-lg' %>
-
             <% end %>
           </div>
-
         </div>
       </div>
       <div class="col-6">
