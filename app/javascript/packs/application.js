@@ -14,9 +14,12 @@ require("channels")
 import 'bootstrap';
 import 'select2';
 
+import { initAOS } from '../plugins/init_aos';
+
 import { loadDynamicSearchText } from '../components/search';
-import { loadIndexCardAnimation } from '../components/index_card';
 import { loadIngridientsSelect } from '../components/ingredients_select';
+import { loadMethodTextNew } from '../components/method_text_new';
+import { loadMethodTextShow } from '../components/method_text_show';
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
@@ -26,7 +29,10 @@ import { loadIngridientsSelect } from '../components/ingredients_select';
 // const imagePath = (name) => images(name, true)
 
 document.addEventListener('turbolinks:load', () => {
+  initAOS();
+
   loadDynamicSearchText();
-  loadIndexCardAnimation();
   loadIngridientsSelect();
+  loadMethodTextNew();
+  loadMethodTextShow();
 });

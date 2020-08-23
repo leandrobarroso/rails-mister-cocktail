@@ -1,5 +1,5 @@
 class CocktailsController < ApplicationController
-  before_action :set_cocktail, only: %i[show destroy]
+  before_action :set_cocktail, only: %i[show edit update destroy]
 
   def index
     if params[:query].present?
@@ -28,6 +28,16 @@ class CocktailsController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @cocktail.update(cocktail_params)
+      redirect_to @cocktail, notice: 'cocktail was successfully updated.'
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @cocktail.destroy
     redirect_to cocktails_url, notice: 'Cocktail was successfully destroyed.'
@@ -40,6 +50,6 @@ class CocktailsController < ApplicationController
   end
 
   def cocktail_params
-    params.require(:cocktail).permit(:name, :description, :photo)
+    params.require(:cocktail).permit(:name, :description, :method, :photo)
   end
 end

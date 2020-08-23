@@ -5,4 +5,3 @@ const loadIngridientsSelect = () => {
 }
 
 export { loadIngridientsSelect };
-

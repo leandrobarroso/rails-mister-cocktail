@@ -8,6 +8,12 @@
     <%= f.input :photo, as: :file %>
   </div>
 
+  <div>
+    <%= f.input :method, as: :text, input_html: { class: 'form-control', id: 'method', rows: '10' } %>
+    <p class="m-0">Method preview</p>
+    <div id="preview" class="mb-2 border rounded p-2 bg-white"></div>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-primary btn-lg" %>
   </div>

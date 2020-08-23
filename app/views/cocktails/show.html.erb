@@ -14,7 +14,7 @@
     <div class="col-12 row">
       <div class="col-6">
         <div class="my-3 rounded p-3 bg-light">
-          <h3 id="ingrdients-header" class="ml-2">Ingredients</h3>
+          <h2 id="ingrdients-header" class="ml-2">Ingredients</h2>
           <ul class="m-2 list-group">
             <% @cocktail.doses.each do |dose| %>
               <li id="<%= "dose-#{dose.id}" %>" class="list-group-item p-2 d-flex justify-content-between">
@@ -36,34 +36,25 @@
         </div>
       </div>
       <div class="col-6">
-        <div class="my-3 border rounded p-3 bg-light d-none">
-          <h3 class="ml-2">Method</h3>
-          <ul class="m-2 list-group">
-            <% @cocktail.doses.each do |dose| %>
-              <li class="list-group-item d-flex justify-content-between">
-                <%= dose.description %>
-                <%= dose.ingredient.name %>
-                <%= link_to dose_path(dose), method: :delete, data: { confirm: 'Are you sure?'} do%>
-                  <i class="fas fa-times"></i>
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
-          <%= link_to cocktail_doses_path(@cocktail), class: 'ml-2 btn btn-secondary btn-lg' do %>
-            <span>Edit Method</span>
-          <% end %>
+        <div class="mh-100 my-3 p-3 bg-light">
+          <h2 class="ml-2">Method</h2>
+          <textarea id="method-content" class="d-none" value=""><%= @cocktail.method %></textarea>
+          <div id="method-render" class="m-2 p-2 bg-white"></div>
         </div>
       </div>
     </div>
   </div>
-  <div class="m-1 d-flex align-items-end justify-content-between">
+  <div class="mx-1 my-2 d-flex align-items-end justify-content-between">
     <%= link_to cocktails_path, class: 'btn btn-primary btn-lg' do %>
       <i class="fas fa-list-ul"></i>
     <% end %>
     <div>
-    <%= link_to cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-3 btn btn-danger btn-lg' do %>
-      <i class="fas fa-trash"></i>
-    <% end %>
+      <%= link_to edit_cocktail_path(@cocktail), class: 'ml-3 btn btn-primary btn-lg' do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
+      <%= link_to cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' }, class: 'ml-3 btn btn-danger btn-lg' do %>
+        <i class="fas fa-trash"></i>
+      <% end %>
     </div>
   </div>
 </div>
