@@ -26,11 +26,11 @@
               </li>
             <% end %>
           </ul>
-          <div id="add-dose" class="list-group-item mx-2 my-5 p-2">
+          <div id="add-dose" class="list-group-item m-2 mt-5 p-2">
             <%= simple_form_for([@cocktail, @dose], remote: true) do |f| %>
                 <%= f.association :ingredient, input_html: { id: 'ingredients' } %>
                 <%= f.input :description, label: 'Amount' %>
-                <%= f.button :submit, 'Add Ingredient'.html_safe, class: 'm-2 btn btn-secondary btn-lg' %>
+                <%= f.button :submit, 'Add Ingredient', class: 'm-2 btn btn-secondary btn-lg' %>
             <% end %>
           </div>
         </div>
@@ -40,6 +40,46 @@
           <h2 class="ml-2">Method</h2>
           <textarea id="method-content" class="d-none" value=""><%= @cocktail.method %></textarea>
           <div id="method-render" class="m-2 p-2 bg-white"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="p-3 bg-light">
+        <h2 class="ml-2">REVIEWS</h2>
+        <div class="row">
+          <div class="col-6">
+            <% if @reviews.blank? %>
+              <p class="m-5 p-5 text-center">Be the first to leave a review for <%= @cocktail.name %>!</p>
+            <% else %>
+              <ul class="m-2 list-group">
+              <% @reviews.each do |review| %>
+                <li id="<%= "review-#{review.id}" %>" class="list-group-item p-2">
+                  <div class=" d-flex justify-content-between">
+                    <div class="my-1">
+                      <span><%= "#{'<i class="fas fa-star"></i> ' * review.rating}".html_safe %></span>
+                    </div>
+                    <%= link_to review_path(review), method: :delete, data: { confirm: 'Are you sure?'}, remote: true do%>
+                      <i class="fas fa-times"></i>
+                    <% end %>
+                  </div>
+                  <p class="m-0"><strong><%= review.author %></strong></p>
+                  <p><%= review.content %></p>
+
+                </li>
+              <% end %>
+            </ul>
+            <% end %>
+          </div>
+          <div class="col-6">
+            <div id="add-review" class="list-group-item m-2 p-2">
+              <%= simple_form_for([@cocktail, @review], remote: true) do |f| %>
+                  <%= f.input :rating, collection: (1..5).to_a, label: "Rate this cocktail" %>
+                  <%= f.input :author, label: 'Your name' %>
+                  <%= f.input :content %>
+                  <%= f.button :submit, 'Send your Review', class: 'm-2 btn btn-secondary btn-lg' %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>

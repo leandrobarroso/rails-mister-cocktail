@@ -15,6 +15,7 @@ import 'bootstrap';
 import 'select2';
 
 import { initAOS } from '../plugins/init_aos';
+import { initStarRating } from '../plugins/init_star_rating';
 
 import { loadDynamicSearchText } from '../components/search';
 import { loadIngridientsSelect } from '../components/ingredients_select';
@@ -35,4 +36,5 @@ document.addEventListener('turbolinks:load', () => {
   loadIngridientsSelect();
   loadMethodTextNew();
   loadMethodTextShow();
+  initStarRating();
 });

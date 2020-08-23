@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :cocktails do
     get 'search', on: :collection
     resources :doses, only: %i[create]
+    resources :reviews, only: %i[create]
   end
 
   resources :doses, only: [:destroy]
+  resources :reviews, only: [:destroy]
 end
