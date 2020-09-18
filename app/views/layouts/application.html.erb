@@ -12,10 +12,12 @@
   </head>
 
   <body class="">
-    <nav class="navbar bg-success">
+    <nav class="navbar bg-dark">
       <%= link_to root_path, class: 'navbar-brand' do %>
-        <i class="fas fa-cocktail display-4"></i>
-        <span id="app-name"> Miss Cocktails</span>
+        <div class="d-flex align-items-center justify-content-between">
+          <i id="app-icon" class="fas fa-cocktail mr-3"></i>
+          <span id="app-name">Miss Cocktails</span>
+        </div>  
       <% end %>
       <!-- <form class="form-inline my-2 my-lg-0" action="cocktails/search" method="POST">
         <input class="" type="search" placeholder="" aria-label="Search" name="query">
