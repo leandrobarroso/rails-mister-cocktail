@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
     @review.destroy
     @cocktail = @review.cocktail
-    redirect_to cocktail_url(@cocktail, anchor: 'add-ingredient')
+    redirect_to cocktail_url(@cocktail, anchor: 'orders-title')
   end
 
   private
